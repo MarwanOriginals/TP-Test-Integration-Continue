@@ -107,16 +107,3 @@ describe('fizzBuzz', function () {
     }
   );
 });
-
-describe('pairs', function () {
-    test.each([
-      [[3,3], 1],
-      [[3,3,5], 1],
-      [[3,3,5,5,5], 4]
-    ])(
-      'Test pair %i equals to %i',
-      (n, expected) => {
-        expect(Util.pairs(n)).toStrictEqual(expected);
-      }
-    );
-  });
