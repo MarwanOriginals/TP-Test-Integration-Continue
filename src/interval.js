@@ -43,7 +43,7 @@ class Interval {
      * @returns {boolean}
      */
     includes(interval) {
-
+        return interval.end < this.end && interval.start > this.start;
     };
 
     /**
@@ -63,7 +63,6 @@ class Interval {
      * @returns {Interval[]}
      */
     union(interval) {
-
     };
 
     /**
@@ -83,7 +82,6 @@ class Interval {
      * @returns {Interval|null}
      */
     intersection(interval) {
-
     };
 
     /**
@@ -103,7 +101,6 @@ class Interval {
      * @returns {Interval[]}
      */
     exclusion(interval) {
-
     };
 }
 
