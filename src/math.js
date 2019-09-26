@@ -36,7 +36,6 @@ Util.isPrime = function (n) {
 
 };
 
-
 /**
  * Additionne l'ensemble des nombres premiers de 2 à n
  *
@@ -47,7 +46,18 @@ Util.isPrime = function (n) {
  * @returns {number}
  */
 Util.sumPrime = function(n) {
-
+  let result = []; // Tableau des sommes
+  if (n < 2) {
+        throw 'Unable to sum for n < 0'
+    }
+  for (let i = 2; i <= n; i++)  // De 2 à n
+  {
+    if(Util.isPrime(i))
+    {
+      result.push(i); // Ajout de la valeur dans le tableau final
+    }
+  }
+  return result.reduce((total, ele) => total + ele); // Somme des éléments dans le tableau
 };
 
 /**
@@ -63,8 +73,25 @@ Util.sumPrime = function(n) {
  * @returns {array}
  */
 Util.fizzBuzz = function(n) {
+    var result = [];
+    for(let i=1;i<=n;i++){
 
+        if(i%3 ===0 && i%5 === 0){
+            result.push("FizzBuzz")
+        }
+        else if(i%3 ===0){
+            result.push("Fizz")
+        }
+        else if(i%5 === 0){
+            result.push("Buzz")
+        }
+        else{
+            result.push(i);
+        }
+    }
+    return result;
 };
+
 
 /**
  * Chiffre une phrase selon la règle suivante : Les A deviennent des B, les B des C, etc.
@@ -75,8 +102,39 @@ Util.fizzBuzz = function(n) {
  * @param phrase
  * @returns {string}
  */
-Util.cipher = function (phrase) {
+Util.cipher = function (text) {
+  
+    var map = {
+        a: 'q', b: 'w', c: 'e',
+        d: 'r', e: 't', f: 'y',
+        g: 'u', h: 'i', i: 'o',
+        j: 'p', k: 'a', l: 's',
+        m: 'd', n: 'f', o: 'g',
+        p: 'h', q: 'j', r: 'k',
+        s: 'l', t: 'z', u: 'x',
+        v: 'c', w: 'v', x: 'b',
+        y: 'n', z: 'm'
+    };
 
+
+    map = (function() {
+        var tmp = {};
+        var k;
+        
+        for(k in map) {
+            if(!map.hasOwnProperty(k)) continue;
+            tmp[map[k]] = k;
+        }
+
+        return tmp;
+    })();
+
+    return text.split('').filter(function(v) {
+        return map.hasOwnProperty(v.toLowerCase());
+    }).map(function(v) {
+        var r = map[v.toLowerCase()];
+        return v.toLowerCase() == v ? r : r.toUpperCase();
+    }).join('');
 };
 
 
