@@ -11,4 +11,5 @@ repository.save({
     "added_at" : '2019-01-01'
 });
 
+console.log(repository.getTotalPrice());
 console.log(repository.getTotalCount());
