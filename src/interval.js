@@ -63,6 +63,17 @@ class Interval {
      * @returns {Interval[]}
      */
     union(interval) {
+        let intervals = [];
+        if(this.overlaps(interval))
+        {
+            intervals.push(new Interval(Math.min(this.start, interval.start), Math.max(this.end, interval.end)));
+        }
+        else
+        {
+            intervals.push(this);
+            intervals.push(interval);
+        }
+        return intervals;
     };
 
     /**
