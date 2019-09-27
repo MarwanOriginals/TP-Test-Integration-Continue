@@ -11,7 +11,6 @@ Util.factorial = (n) => {
     if (n < 0) {
         throw 'n is negative'
     }
-
     return n * Util.factorial(n - 1);
 };
 
