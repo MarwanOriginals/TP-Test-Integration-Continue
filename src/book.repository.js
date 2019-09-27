@@ -14,15 +14,19 @@ class BookRepository {
     /**
      * Nombre total de livre
      */
-    getTotalCount() {
-
+    getTotalCount()
+    {
+        return this.db.get('books').size().value();
     }
 
     /**
      * Somme du prix de tous les livre
      */
     getTotalPrice() {
-
+        let a = this.db.get('books')
+            .map('price')
+            .value();
+        return a.reduce((total, curr) => total + curr);
     }
 
 
