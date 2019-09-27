@@ -93,6 +93,11 @@ class Interval {
      * @returns {Interval|null}
      */
     intersection(interval) {
+        if(this.overlaps(interval))
+        {
+            return new Interval(Math.max(interval.start, this.start), Math.min(interval.end, this.end));
+        }
+        return null;
     };
 
     /**
@@ -112,6 +117,38 @@ class Interval {
      * @returns {Interval[]}
      */
     exclusion(interval) {
+
+        let result = [];
+
+        if(this.overlaps(interval))
+        {
+
+            for(let i = this.start ; i < interval.start ; i++)
+            {
+                result.push(i);
+            }
+
+            for(let i = (this.end)+1 ; i <= interval.end ; i++)
+            {
+                result.push(i);
+            }
+            return result;
+        }
+
+        else if(!(this.overlaps(interval)))
+        {
+            for(let i = this.start ; i <= this.end ; i++)
+            {
+                result.push(i);
+            }
+
+            for(let i = interval.start ; i <= interval.end ; i++)
+            {
+                result.push(i);
+            }
+            return result;
+        }
+
     };
 }
 
