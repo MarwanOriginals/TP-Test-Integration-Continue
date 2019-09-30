@@ -42,3 +42,26 @@ describe('Book repository Total Price', function () {
     });
 });
 
+describe('Book repository Book By Name', function () {
+    test('Total Price = 9', () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            filter : jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue({
+                "id": 1,
+                "name": "test",
+                "price": 6.1,
+                "added_at": "2019-01-01"
+            })
+        };
+        const repository = new BookRepository(dbMock);
+        expect(repository.getBookByName("test")).toEqual({
+            "id": 1,
+            "name": "test",
+            "price": 6.1,
+            "added_at": "2019-01-01"
+        });
+    });
+});
+
