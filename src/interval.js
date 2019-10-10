@@ -122,30 +122,14 @@ class Interval {
 
         if(this.overlaps(interval))
         {
-
-            for(let i = this.start ; i < interval.start ; i++)
-            {
-                result.push(i);
-            }
-
-            for(let i = (this.end)+1 ; i <= interval.end ; i++)
-            {
-                result.push(i);
-            }
+            result.push(new Interval(this.start, interval.start));
+            result.push(new Interval(this.end,interval.end));
             return result;
         }
-
         else if(!(this.overlaps(interval)))
         {
-            for(let i = this.start ; i <= this.end ; i++)
-            {
-                result.push(i);
-            }
-
-            for(let i = interval.start ; i <= interval.end ; i++)
-            {
-                result.push(i);
-            }
+            result.push(new Interval(this.start,this.end));
+            result.push(new Interval(interval.start,interval.end));
             return result;
         }
 
