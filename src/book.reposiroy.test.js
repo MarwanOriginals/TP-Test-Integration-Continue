@@ -43,7 +43,7 @@ describe('Book repository Total Price', function () {
 });
 
 describe('Book repository Book By Name', function () {
-    test('Total Price = 9', () => {
+    test('Name = test', () => {
 
         const dbMock = {
             get : jest.fn().mockReturnThis(),
@@ -64,4 +64,23 @@ describe('Book repository Book By Name', function () {
         });
     });
 });
+/*
+describe('Book repository get Count Book Added By Mont', function () {
+    test('Name = test', () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            filter : jest.fn().mockReturnThis(),
+            map : jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue({
+                "added_at": "2019-01-01"
+            })
+        };
+        const repository = new BookRepository(dbMock);
+        expect(repository.getCountBookAddedByMont("test")).toEqual({
+            year: 2019, month: 1, count: 1, count_cumulative: 1
+        });
+    });
+});
+ */
 
